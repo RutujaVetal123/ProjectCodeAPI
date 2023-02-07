@@ -3,44 +3,46 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ProjectCode.Models;
+using ProjectCode.Services;
 
 namespace ProjectCode.Controllers
 {
     public class CodeController : Controller
     {
-        private ProductService _productServices;
-        public ProuductController(ProductService Product)
+        private CodeService _codeServices;
+        public CodeController(CodeService code)
         {
-            _productServices = Product;
+            _codeServices = code;
         }
-        [HttpPost("SaveProduct")]
-        public IActionResult SaveProduct(Product Product)
+        [HttpPost("SaveCodeDetails")]
+        public IActionResult SaveCodeDetails(CodeDetails code)
         {
-            return Ok(_productServices.SaveProduct(Product));
-        }
-
-        [HttpDelete("DeleteProduct")]
-        public IActionResult DeleteProduct(int ProductId)
-        {
-            return Ok(_productServices.DeleteProduct(ProductId));
+            return Ok(_codeServices.SaveCodeDetails(code));
         }
 
-        [HttpPut("UpdateProduct")]
-        public IActionResult UpdateProducte(Product Product)
+        [HttpDelete("DeleteCodeDetails")]
+        public IActionResult DeleteCodeDetails(int CodeID)
         {
-            return Ok(_productServices.UpdateProduct(Product));
+            return Ok(_codeServices.DeleteCodeDetails(CodeID));
         }
 
-        [HttpGet("GetProduct")]
-        public IActionResult GetProduct(int ProductId)
+        [HttpPut("UpdateCodeDetails")]
+        public IActionResult UpdateCodeDetails(CodeDetails code)
         {
-            return Ok(_productServices.GetProduct(ProductId));
+            return Ok(_codeServices.UpdateCodeDetails(code));
         }
 
-        [HttpGet("GetAllProduct()")]
-        public List<Product> GetAllProduct()
+        [HttpGet("GetCodeDetailsByID")]
+        public IActionResult GetProduct(int CodeID)
         {
-            return _productServices.GetAllProduct();
+            return Ok(_codeServices.GetCodeDetailsByID(CodeID));
+        }
+
+        [HttpGet("GetAllCodeDetails()")]
+        public List<CodeDetails> GetAllCodeDetails()
+        {
+            return _codeServices.GetAllCodeDetails();
         }
     }
 }
