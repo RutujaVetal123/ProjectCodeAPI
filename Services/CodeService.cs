@@ -1,4 +1,4 @@
-﻿using ProjectCode.Models;
+using ProjectCode.Models;
 using ProjectCode.Repository;
 using System;
 using System.Collections.Generic;
@@ -18,23 +18,23 @@ namespace ProjectCode.Services
 
         public string SaveCodeDetails(CodeDetails code)
         {
-            return _CodeRepository.SaveProduct(code);
+            return _CodeRepository.SaveCodeDetails(code);
         }
-        public string DeleteProduct(int ProductId)
+        public string DeleteCodeDetails(int CodeID)
         {
-            return _CodeRepository.DeleteProduct(ProductId);
+            return _CodeRepository.DeleteCodeDetails(CodeID);
         }
-        public string UpdateProduct(Product Product)
+        public string UpdateCodeDetails(CodeDetails code)
         {
-            return _CodeRepository.UpdateProduct(Product);
+            return _CodeRepository.UpdateCodeDetails(CodeDetails);
         }
-        public CodeService GetCodeDetailsByID(int ProductId)
+        public CodeService GetCodeDetailsByID(int CodeID)
         {
-            return _CodeRepository.GetCodeDetailsByID(ProductId);
+            return _CodeRepository.GetCodeDetailsByID(CodeID);
         }
-        public List<Product> GetAllProduct()
+        public List<CodeDetails> GetAllCodeDetails()
         {
-            return _CodeRepository.GetAllProduct();
+            return _CodeRepository.GetAllCodeDetails();
         }
     }
 }
